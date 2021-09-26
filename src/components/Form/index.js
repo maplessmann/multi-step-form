@@ -1,22 +1,44 @@
-import TextField from '~/components/Fields/Text'
+import { useForm } from 'react-hook-form'
+import useMultiStepForm from '~/hooks/useMultiStepForm'
 import Button from '~/components/Button'
 import ProgressBar from '~/components/ProgressBar'
 import ChevronRightIcon from '~/components/Icon/ChevronRight'
 import { Title, FieldsWrapper, FormNavigation } from './styles'
 
 const Form = () => {
+  const { register, handleSubmit } = useForm()
+  const {
+    currentStep,
+    percentageComplete,
+    onSubmit,
+    onPrevStep,
+    canAdvanceStep,
+    canRetreatStep,
+  } = useMultiStepForm()
+
+  const { title, fields } = currentStep
+
   return (
-    <form>
-      <ProgressBar percentage={33} />
-      <Title>Personal info</Title>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <ProgressBar percentage={percentageComplete} />
+      <Title>{title}</Title>
       <FieldsWrapper>
-        <TextField name="first_name" label="First name" />
-        <TextField name="last_name" label="Last name" />
-        <TextField name="email" label="Email" type="email" required />
-        <TextField name="country" label="Country" />
+        {fields.map(({ component: Field, name, ...rest }) => (
+          <Field key={name} name={name} register={register} {...rest} />
+        ))}
       </FieldsWrapper>
       <FormNavigation>
-        <Button icon={ChevronRightIcon}>Submit</Button>
+        {canRetreatStep && (
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={onPrevStep}
+            icon={ChevronRightIcon}
+          />
+        )}
+        <Button icon={ChevronRightIcon}>
+          {canAdvanceStep ? 'Next' : 'Submit'}
+        </Button>
       </FormNavigation>
     </form>
   )

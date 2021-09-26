@@ -35,4 +35,16 @@ export const Input = styled.input`
       color: var(--color-primary);
     }
   }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover {
+    border: 1px solid var(--color-bg-secondary);
+    -webkit-text-fill-color: var(--color-text);
+    box-shadow: 0 0 0px 1000px var(--color-bg-secondary) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  &:-webkit-autofill:focus {
+    border: 1px solid var(--color-primary);
+  }
 `
