@@ -1,11 +1,15 @@
 :root {
-  --color-primary: #9f46e4;
+  --color-primary: hsla(274, 75%, 58%, 1);
   --color-primary-gradient: linear-gradient(to right, #9f46e4, #5c46e4);
   --color-bg: #070913;
   --color-bg-secondary: #1b1d26;
   --color-text: #ffffff;
   --color-text-secondary: #999999;
   --color-text-terniary: #666666;
+  --color-button-bg: hsla(274, 75%, 58%, 0.12);
+  --color-button-hover-bg: hsla(274, 75%, 58%, 0.18);
+  --font-size-default: 16px;
+  --font-size-small: 14px;
 }
 
 html,
@@ -16,7 +20,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-size: 16px;
+  font-size: var(--font-size-default);
 }
 
 a {
@@ -40,6 +44,7 @@ h1,
 h2,
 h3 {
   margin: 0;
+  font-weight: 600;
 }
 
 img {
