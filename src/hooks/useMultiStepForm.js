@@ -1,28 +1,31 @@
-import { useState } from 'react'
-
+import { useRouter } from 'next/router'
+import useStore from '~/store/useStore'
 import { steps } from '~/utils/form/fields'
 
 const useMultiStepForm = () => {
-  const [currentStepIndex, setCurrentStepIndex] = useState(0)
+  const router = useRouter()
 
-  const currentStep = steps[currentStepIndex]
-  const percentageComplete = (100 / steps.length) * (currentStepIndex + 1)
-  const canRetreatStep = currentStepIndex > 0
-  const canAdvanceStep = currentStepIndex < steps.length - 1
+  const setFormData = useStore((state) => state.setFormData)
+  const step = useStore((state) => state.step)
+
+  const currentStep = steps[step.count]
+  const percentageComplete = (100 / steps.length) * (step.count + 1)
+  const canRetreatStep = step.count > 0
+  const canAdvanceStep = step.count < steps.length - 1
 
   const onSubmit = (data) => {
-    if (canAdvanceStep) {
-      setCurrentStepIndex((prev) => prev + 1)
-    } else {
-      // Submit form
-    }
+    setFormData(data)
 
-    console.log(data)
+    if (canAdvanceStep) {
+      step.increase()
+    } else {
+      step.reset()
+    }
   }
 
   const onPrevStep = () => {
     if (canRetreatStep) {
-      setCurrentStepIndex((prev) => prev - 1)
+      step.decrease()
     }
   }
 
