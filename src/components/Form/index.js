@@ -3,7 +3,7 @@ import useMultiStepForm from '~/hooks/useMultiStepForm'
 import Button from '~/components/Button'
 import ProgressBar from '~/components/ProgressBar'
 import ChevronRightIcon from '~/components/Icon/ChevronRight'
-import { Title, FieldsWrapper, FormNavigation } from './styles'
+import { FormRoot, Title, FieldsWrapper, FormNavigation } from './styles'
 
 const Form = () => {
   const { register, handleSubmit } = useForm()
@@ -19,7 +19,7 @@ const Form = () => {
   const { title, fields } = currentStep
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <FormRoot onSubmit={handleSubmit(onSubmit)}>
       <ProgressBar percentage={percentageComplete} />
       <Title>{title}</Title>
       <FieldsWrapper>
@@ -40,7 +40,7 @@ const Form = () => {
           {canAdvanceStep ? 'Next' : 'Submit'}
         </Button>
       </FormNavigation>
-    </form>
+    </FormRoot>
   )
 }
 

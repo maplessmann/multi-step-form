@@ -22,8 +22,8 @@ export const steps = [
       },
       {
         component: TextField,
-        name: 'country',
-        label: 'Country',
+        name: 'phone',
+        label: 'Phone',
       },
     ],
   },
@@ -49,6 +49,26 @@ export const steps = [
         component: TextField,
         name: 'zip',
         label: 'Zip code',
+      },
+    ],
+  },
+  {
+    title: 'Professional info',
+    fields: [
+      {
+        component: TextField,
+        name: 'company',
+        label: 'Company',
+      },
+      {
+        component: TextField,
+        name: 'role',
+        label: 'Your role',
+      },
+      {
+        component: TextField,
+        name: 'years_experience',
+        label: 'Years of experience',
       },
     ],
   },

@@ -1,5 +1,11 @@
 import styled from 'styled-components'
 
+export const FormRoot = styled.form`
+  display: inherit;
+  flex-direction: inherit;
+  flex-grow: inherit;
+`
+
 export const Title = styled.h2`
   margin-top: 32px;
 `
@@ -23,5 +29,9 @@ export const FormNavigation = styled.div`
     > .icon {
       transform: rotate(180deg);
     }
+  }
+
+  @media (max-width: 768px) {
+    margin-top: auto;
   }
 `

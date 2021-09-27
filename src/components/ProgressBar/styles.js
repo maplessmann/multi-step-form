@@ -18,7 +18,7 @@ export const Bar = styled.div`
     background: var(--color-primary);
     border-radius: 0 10px 10px 0;
     transition: transform 0.3s ease;
-    transform: ${(props) => `translateX(-${100 - props.filled}%)`};
+    transform: ${(props) => `translateX(-${100 - ~~props.filled}%)`};
     transform-origin: left;
   }
 `

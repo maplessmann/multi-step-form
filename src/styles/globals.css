@@ -56,6 +56,12 @@ img {
   box-sizing: border-box;
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .container {
   width: 100%;
   max-width: 600px;
@@ -64,4 +70,11 @@ img {
   margin-right: auto;
   padding-left: 16px;
   padding-right: 16px;
+}
+
+.main {
+  flex-grow: 1;
+  padding-bottom: 24px;
+  display: inherit;
+  flex-direction: inherit;
 }

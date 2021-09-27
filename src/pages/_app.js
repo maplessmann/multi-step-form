@@ -4,7 +4,7 @@ import '../styles/globals.css'
 
 function App({ Component, pageProps }) {
   return (
-    <div>
+    <div className="app">
       <Head>
         <title>Multi Step Form</title>
         <meta name="description" content="Multi Step Form" />
@@ -12,7 +12,7 @@ function App({ Component, pageProps }) {
       </Head>
 
       <Header />
-      <main className="container">
+      <main className="main container">
         <Component {...pageProps} />
       </main>
     </div>
