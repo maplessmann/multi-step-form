@@ -2,4 +2,4 @@
 
 # Multi Step Form
 
-Multi-step form built using React Hook Form
+Multi-step form built using [React Hook Form](https://react-hook-form.com/) and [zustand](https://github.com/pmndrs/zustand)
