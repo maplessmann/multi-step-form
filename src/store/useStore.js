@@ -1,18 +1,27 @@
 import create from 'zustand'
 import { devtools } from 'zustand/middleware'
+import produce from 'immer'
+
+const mutation = {
+  increaseStep: (state) => {
+    state.step.count += 1
+  },
+  decreaseStep: (state) => {
+    state.step.count -= 1
+  },
+  resetStep: (state) => {
+    state.step.count = 0
+  },
+}
 
 const store = (set) => ({
   formData: {},
   setFormData: (formData) => set({ formData }),
   step: {
     count: 0,
-    increase: () => {
-      set((state) => ({ step: { ...state.step, count: state.step.count + 1 } }))
-    },
-    decrease: () => {
-      set((state) => ({ step: { ...state.step, count: state.step.count - 1 } }))
-    },
-    reset: () => set((state) => ({ step: { ...state.step, count: 0 } })),
+    increase: () => set(produce(mutation.increaseStep)),
+    decrease: () => set(produce(mutation.decreaseStep)),
+    reset: () => set(produce(mutation.resetStep)),
   },
 })
 
